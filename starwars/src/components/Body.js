@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row } from "reactstrap";
 import Card from "./Card";
+import Buttons from "./Buttons";
 
 const Body = () => {
 	const [data, setData] = useState([]);
@@ -14,6 +15,7 @@ const Body = () => {
 	}, []);
 	return (
 		<Container>
+			<Buttons />
 			<Row>
 				{data.map((a, index) => {
 					return (
