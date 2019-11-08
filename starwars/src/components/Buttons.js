@@ -11,11 +11,11 @@ const Center = styled.div`
 	margin-bottom: 5%;
 `;
 
-const Buttons = () => {
+const Buttons = ({ next, prev }) => {
 	return (
 		<Center>
-			<Button>Previous</Button>
-			<Button>Next</Button>
+			<Button onClick={() => prev()}>Previous</Button>
+			<Button onClick={() => next()}>Next</Button>
 		</Center>
 	);
 };

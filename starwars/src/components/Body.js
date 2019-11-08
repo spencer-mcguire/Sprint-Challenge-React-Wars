@@ -6,16 +6,23 @@ import Buttons from "./Buttons";
 
 const Body = () => {
 	const [data, setData] = useState([]);
+	const [page, setPage] = useState(1);
+
+	const Next = () => {
+		setPage(page + 1);
+	};
+	const Prev = () => {
+		setPage(page - 1);
+	};
 
 	useEffect(() => {
 		axios
-			.get("https://lambda-swapi.herokuapp.com/api/people/")
+			.get(`https://lambda-swapi.herokuapp.com/api/people/?page=${page}`)
 			.then(res => setData(res.data.results))
 			.catch(err => console.log(`HOLD ON: `, err));
-	}, []);
+	}, [page]);
 	return (
 		<Container>
-			<Buttons />
 			<Row>
 				{data.map((a, index) => {
 					return (
@@ -28,6 +35,7 @@ const Body = () => {
 					);
 				})}
 			</Row>
+			<Buttons next={Next} prev={Prev} />
 		</Container>
 	);
 };
